@@ -23,10 +23,10 @@ apiRoutes.post('/register', function (req, res, next) {
         res.sendStatus(400);
     });
 });
+
 apiRoutes.post('/verifytoken', function (req, res, next) {
     var token = req.body.token || req.params('token') || req.headers['x-access-token'];
     if (token) {
-
         jwt.verify(token, superSecret, function (err, decoded) {
             if (err) {
                 return res.json({success: false, message: 'Failed to authenticate token.'});

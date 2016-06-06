@@ -24,7 +24,8 @@ app.use(bodyParser.json());
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
-app.use('/credentials', require('./routes/credentials_api.js'));
+app.use('/credentials', require('./routes/credentials.api.js'));
+
 
 
 module.exports = app;
