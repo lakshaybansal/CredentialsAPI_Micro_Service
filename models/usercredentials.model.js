@@ -1,58 +1,56 @@
-var jwt=require('jsonwebtoken');
-var Q=require('q');
+var jwt = require('jsonwebtoken');
+var Q = require('q');
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 // set up a mongoose model and pass it using module.exports
 
-var UserCredentialsSchema=new Schema({
-    name: String,
+var UserCredentialsSchema = new Schema({
+    username: String,
     password: String,
     admin: Boolean
 });
-var UserCredentials= mongoose.model('UserCredentials',UserCredentialsSchema);
 
-module.exports=UserCredentials;
+var services = {};
 
-UserCredentialsSchema.statics.authenticate=function authenticate(UserCredential){
+services.authenticate = authenticate;
+services.register = register;
+
+var UserCredentials = mongoose.model('UserCredentials', UserCredentialsSchema);
+
+module.exports = services;
+
+function authenticate(credentials) {
     var deferred = Q.defer();
 
-    UserCredentials.findOne({
-      name: UserCredential.name
-    }, function(err, usercredentials) {
+    UserCredentials.findOne({username: credentials.username}, function (err, data) {
 
-      if (err) throw err;
-
-      if (!usercredentials) {
-        console.log("Not found");
-        deferred.resolve({ success: false, message: 'Authentication failed. User not found.' });
-      } else if (usercredentials) {
-        console.log("username found");
-        // check if password matches
-        if (usercredentials.password !=UserCredential.password) {
-          console.log(" password not found");
-          deferred.resolve({ success: false, message: 'Authentication failed. Wrong password.' });
-        } else {
-
-          // if user is found and password is right
-
-          deferred.resolve({
-            success: true,
-          });
+        if (err) {
+            deferred.reject({status: false, reason: error})
         }
-      }
+        if (!data || data.length == 0) {
+            deferred.reject({status: false, reason: 'user not found'})
+        }
+        if (credentials.password != data.password) {
+            deferred.reject({status: false, reason: 'wrong password'})
+        }
+        deferred.resolve({status: true})
     });
- return deferred.promise;
-}
- UserCredentialsSchema.statics.register=function register(UserCredential)
- {
-   var deferred=Q.defer();
-   var record=new UserCredentials(UserCredential);
-	record.save(function(err) {
-		if (err) throw err;
-		console.log('User saved successfully');
-		deferred.resolve({ success: true });
-	});
 
-return deferred.promise;
- }
+    return deferred.promise;
+};
+
+function register(credentials) {
+    var deferred = Q.defer();
+
+    var record = new UserCredentials(credentials);
+    record.save(function (err) {
+        if (err) {
+            deferred.reject();
+        } else {
+            deferred.resolve();
+        }
+    });
+
+    return deferred.promise;
+};

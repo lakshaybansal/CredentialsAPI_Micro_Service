@@ -1,0 +1,4 @@
+{
+  "secret": "travelandexpense",
+  "database": "mongodb://localhost/usercredentials"
+}

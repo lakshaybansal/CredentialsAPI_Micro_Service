@@ -1,33 +1,35 @@
 0 info it worked if it ends with ok
-1 verbose cli [ '/usr/bin/nodejs', '/usr/bin/npm', 'start' ]
-2 info using npm@3.8.9
-3 info using node@v6.2.0
+1 verbose cli [ 'C:\\Program Files\\nodejs\\node.exe',
+1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'start' ]
+2 info using npm@3.7.3
+3 info using node@v5.9.0
 4 verbose run-script [ 'prestart', 'start', 'poststart' ]
 5 info lifecycle credentials_api@0.0.0~prestart: credentials_api@0.0.0
 6 silly lifecycle credentials_api@0.0.0~prestart: no script for prestart, continuing
 7 info lifecycle credentials_api@0.0.0~start: credentials_api@0.0.0
 8 verbose lifecycle credentials_api@0.0.0~start: unsafe-perm in lifecycle true
-9 verbose lifecycle credentials_api@0.0.0~start: PATH: /usr/lib/node_modules/npm/bin/node-gyp-bin:/vagrant/CredentialsAPI_Micro_Service/node_modules/.bin:/usr/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/opt/puppetlabs/bin
-10 verbose lifecycle credentials_api@0.0.0~start: CWD: /vagrant/CredentialsAPI_Micro_Service
-11 silly lifecycle credentials_api@0.0.0~start: Args: [ '-c', 'node ./bin/www' ]
+9 verbose lifecycle credentials_api@0.0.0~start: PATH: C:\Program Files\nodejs\node_modules\npm\bin\node-gyp-bin;C:\StackRoute-Vagrant-Node5-Mongo3.2\StackRoute\TE\CredentialsAPI_Micro_Service\node_modules\.bin;C:\Program Files\nodejs;C:\oraclexe\app\oracle\product\11.2.0\server\bin;;C:\ProgramData\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Common Files\Adobe\AGL;C:\Program Files\Microsoft\Web Platform Installer\;C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit\;C:\Program Files\Microsoft SQL Server\110\Tools\Binn\;C:\Program Files\Microsoft SQL Server\120\Tools\Binn\;C:\HashiCorp\Vagrant\bin;C:\Program Files (x86)\QuickTime\QTSystem\;C:\Program Files\Java\jdk1.8.0_73\bin;C:\Program Files\MongoDB\Server\3.2\bin;C:\Program Files\nodejs\;C:\Program Files\OpenVPN\bin;C:\Users\lenovo\AppData\Local\atom\bin;C:\Users\lenovo\AppData\Roaming\npm
+10 verbose lifecycle credentials_api@0.0.0~start: CWD: C:\StackRoute-Vagrant-Node5-Mongo3.2\StackRoute\TE\CredentialsAPI_Micro_Service
+11 silly lifecycle credentials_api@0.0.0~start: Args: [ '/d /s /c', 'node ./bin/www' ]
 12 silly lifecycle credentials_api@0.0.0~start: Returned: code: 1  signal: null
 13 info lifecycle credentials_api@0.0.0~start: Failed to exec start script
 14 verbose stack Error: credentials_api@0.0.0 start: `node ./bin/www`
 14 verbose stack Exit status 1
-14 verbose stack     at EventEmitter.<anonymous> (/usr/lib/node_modules/npm/lib/utils/lifecycle.js:245:16)
-14 verbose stack     at emitTwo (events.js:106:13)
-14 verbose stack     at EventEmitter.emit (events.js:191:7)
-14 verbose stack     at ChildProcess.<anonymous> (/usr/lib/node_modules/npm/lib/utils/spawn.js:24:14)
-14 verbose stack     at emitTwo (events.js:106:13)
-14 verbose stack     at ChildProcess.emit (events.js:191:7)
+14 verbose stack     at EventEmitter.<anonymous> (C:\Program Files\nodejs\node_modules\npm\lib\utils\lifecycle.js:239:16)
+14 verbose stack     at emitTwo (events.js:100:13)
+14 verbose stack     at EventEmitter.emit (events.js:185:7)
+14 verbose stack     at ChildProcess.<anonymous> (C:\Program Files\nodejs\node_modules\npm\lib\utils\spawn.js:24:14)
+14 verbose stack     at emitTwo (events.js:100:13)
+14 verbose stack     at ChildProcess.emit (events.js:185:7)
 14 verbose stack     at maybeClose (internal/child_process.js:850:16)
 14 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:215:5)
 15 verbose pkgid credentials_api@0.0.0
-16 verbose cwd /vagrant/CredentialsAPI_Micro_Service
-17 error Linux 4.4.0-21-generic
-18 error argv "/usr/bin/nodejs" "/usr/bin/npm" "start"
-19 error node v6.2.0
-20 error npm  v3.8.9
+16 verbose cwd C:\StackRoute-Vagrant-Node5-Mongo3.2\StackRoute\TE\CredentialsAPI_Micro_Service
+17 error Windows_NT 10.0.10586
+18 error argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "start"
+19 error node v5.9.0
+20 error npm  v3.7.3
 21 error code ELIFECYCLE
 22 error credentials_api@0.0.0 start: `node ./bin/www`
 22 error Exit status 1
