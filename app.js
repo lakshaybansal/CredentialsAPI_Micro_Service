@@ -1,4 +1,5 @@
 var express = require('express');
+var cors = require('cors')
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
@@ -8,6 +9,7 @@ var jwt = require('jsonwebtoken'); // used to create, sign, and verify tokens
 var config = require('./config.json'); // get our config file
 
 var app = express();
+app.use(cors());
 
 mongoose.connect(config.database);
 
@@ -25,7 +27,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use('/credentials', require('./routes/credentials.api.js'));
-
 
 
 module.exports = app;

@@ -24,14 +24,13 @@ function authenticate(credentials) {
     var deferred = Q.defer();
 
     UserCredentials.findOne({username: credentials.username}, function (err, data) {
-
         if (err) {
             deferred.reject({status: false, reason: error})
         }
-        if (!data || data.length == 0) {
+        else if (!data || data == null) {
             deferred.reject({status: false, reason: 'user not found'})
         }
-        if (credentials.password != data.password) {
+        else if (credentials.password != data.password) {
             deferred.reject({status: false, reason: 'wrong password'})
         }
         deferred.resolve({status: true})
