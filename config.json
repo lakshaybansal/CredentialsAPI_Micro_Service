@@ -1,4 +1,7 @@
 {
-  "secret": "travelandexpense",
-  "database": "mongodb://localhost/usercredentials"
+  "secret": "vinitkumar",
+  "database": "mongodb://localhost/usercredentials",
+  "api": {
+    "profileAPI": "http://172.23.238.164:3040/api/userEntity/"
+  }
 }
