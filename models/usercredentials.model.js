@@ -1,4 +1,3 @@
-var jwt = require('jsonwebtoken');
 var Q = require('q');
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
@@ -11,19 +10,11 @@ var UserCredentialsSchema = new Schema({
     admin: Boolean
 });
 
-var services = {};
 
-services.authenticate = authenticate;
-services.register = register;
-
-var UserCredentials = mongoose.model('UserCredentials', UserCredentialsSchema);
-
-module.exports = services;
-
-function authenticate(credentials) {
+UserCredentialsSchema.statics.authenticate = function(credentials) {
     var deferred = Q.defer();
 
-    UserCredentials.findOne({username: credentials.username}, function (err, data) {
+    this.findOne({username: credentials.username}, function (err, data) {
         if (err) {
             deferred.reject({status: false, reason: error})
         }
@@ -39,17 +30,19 @@ function authenticate(credentials) {
     return deferred.promise;
 };
 
-function register(credentials) {
-    var deferred = Q.defer();
+// NOTE: Not Required.
+// UserCredentialsSchema.statics.register = function(credentials) {
+//     var deferred = Q.defer();
 
-    var record = new UserCredentials(credentials);
-    record.save(function (err) {
-        if (err) {
-            deferred.reject();
-        } else {
-            deferred.resolve();
-        }
-    });
+//     this.create(credentials,function (err) {
+//         if (err) {
+//             deferred.reject();
+//         } else {
+//             deferred.resolve();
+//         }
+//     });
 
-    return deferred.promise;
-};
+//     return deferred.promise;
+// };
+
+module.exports = mongoose.model('UserCredentials', UserCredentialsSchema);
