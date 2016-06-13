@@ -1,7 +1,7 @@
 {
   "secret": "vinitkumar",
-  "database": "mongodb://172.23.238.156/usercredentials",
+  "database": "mongodb://localhost/usercredentials",
   "api": {
-    "profileAPI": "http://172.23.238.164:3040/api/userEntity/"
+    "profileAPI": "http://localhost:8060/api/userEntity/"
   }
 }
