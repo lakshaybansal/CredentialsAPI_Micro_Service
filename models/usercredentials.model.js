@@ -13,7 +13,6 @@ var UserCredentialsSchema = new Schema({
 
 UserCredentialsSchema.statics.authenticate = function(credentials) {
     var deferred = Q.defer();
-
     this.findOne({username: credentials.username}, function (err, data) {
         if (err) {
             deferred.reject({status: false, reason: error})
@@ -45,4 +44,4 @@ UserCredentialsSchema.statics.authenticate = function(credentials) {
 //     return deferred.promise;
 // };
 
-module.exports = mongoose.model('UserCredentials', UserCredentialsSchema);
+module.exports = mongoose.model('UserCredential', UserCredentialsSchema,'UserCredentials');

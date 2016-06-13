@@ -20,13 +20,15 @@ function getProfile(username) {
       }
       else if (!error && response.statusCode == 200 && body != null) {
          var data = JSON.parse(body);
+         console.log("Inside Get Profile",data);
          var userObj = {
             username: username,
-            band: data.band,
-            work_experience_in_year: data.work_experience_in_year,
-            country_code: data.country_code,
-            country: data.country,
-            preferred_location: data.preferred_location
+            band: data.result.band,
+            work_experience_in_year: data.result.work_experience_in_year,
+            country_code: data.result.country_code,
+            country: data.result.country,
+            preferred_location: data.result.preferred_location,
+            organisation_name: data.result.organisation_name
          };
          generateToken(userObj).then(function (token) {
             deferred.resolve(token);
@@ -38,6 +40,7 @@ function getProfile(username) {
 }
 
 function generateToken(obj) {
+  console.log("Inside Generate Token",obj);
    var deferred = Q.defer();
    var token = jwt.sign(obj, superSecret, {
       expiresIn: 60 * 1200  // expires in 120 Minutes

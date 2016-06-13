@@ -6,8 +6,10 @@ var config = require('../config');
 var credentialHandler = require('./credentials.controller.js')
 var superSecret = config.secret;
 
+
 router.post('/authenticate', function (req, res) {
     userCredential.authenticate(req.body).then(function (response) {
+        console.log(req.body);
         credentialHandler.getProfile(req.body.username).then(function (data) {
             res.send(data);
         }).catch(function () {
@@ -42,7 +44,7 @@ router.get('/verifyToken', function (req, res, next) {
 
 
 router.get('/decodeToken', function (req, res, next) {
-    var token = req.cookies.token;
+    var token = req.cookies.token || req.headers['x-access-token'];
     if (token) {
         credentialHandler.verifyToken(token).then(function (obj) {
             res.send({ object: obj });

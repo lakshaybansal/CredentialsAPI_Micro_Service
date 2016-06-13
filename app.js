@@ -17,6 +17,7 @@ app.use(function (req, res, next) {
 });
 
 //config.database refers to the database of the organization, whose
+console.log(config.database);
 mongoose.connect(config.database);
 
 var db = mongoose.connection;
