@@ -21,7 +21,7 @@ router.post('/authenticate', function (req, res) {
 });
 
 router.get('/verifyToken', function (req, res, next) {
-   var token = req.cookies.token;
+   var token = req.cookies.token || req.headers['x-access-token'];
    console.log(req.cookies)
    if (token) {
       credentialHandler.verifyToken(token).then(function () {
