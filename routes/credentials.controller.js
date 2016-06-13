@@ -22,11 +22,12 @@ function getProfile(username) {
          var data = JSON.parse(body);
          var userObj = {
             username: username,
-            band: data.band,
-            work_experience_in_year: data.work_experience_in_year,
-            country_code: data.country_code,
-            country: data.country,
-            preferred_location: data.preferred_location
+            band: data.result.band,
+            work_experience_in_year: data.result.work_experience_in_year,
+            country_code: data.result.country_code,
+            country: data.result.country,
+            preferred_location: data.result.preferred_location,
+            organisation_name: data.result.organisation_name
          };
          generateToken(userObj).then(function (token) {
             deferred.resolve(token);
